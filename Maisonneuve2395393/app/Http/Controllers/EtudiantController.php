@@ -34,6 +34,13 @@ class EtudiantController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nom' => 'required|max:75',
+            'adresse' => 'required|max:125',
+            'telephone' => 'required|max:16',
+            'email' => 'email|max:100',
+            'date_de_naissance' => 'date'
+        ]);
         
         $etudiant = Etudiant::create([
             'nom' => $request->nom,
@@ -76,6 +83,13 @@ class EtudiantController extends Controller
      */
     public function update(Request $request, Etudiant $etudiant)
     {
+        $request->validate([
+            'nom' => 'required|max:75',
+            'adresse' => 'required|max:125',
+            'telephone' => 'required|max:16',
+            'email' => 'email|max:100',
+            'date_de_naissance' => 'date'
+        ]);
         //
         $etudiant->update([
             'nom' => $request->nom,

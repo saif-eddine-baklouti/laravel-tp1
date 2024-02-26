@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@section('title', 'Etudiant List')
+@section('title', 'Ajoute Etudiant')
 @section('content')
-
+<a href="{{ route('etudiant.index') }}"><< Liste Etudiant</a>
 <h1>Ajoute Etudiant</h1>
 
 <form action="{{ route('etudiant.store') }}" method="POST">

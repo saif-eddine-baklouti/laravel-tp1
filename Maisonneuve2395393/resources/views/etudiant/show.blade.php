@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Etudiant')
 @section('content')
-
+<a href="{{ route('etudiant.index') }}"><< Liste Etudiant</a>
 <div class="col-md-6">
         <ul>
             <li> <strong>Nom: </strong> {{ $etudiant->nom }} </li> 
