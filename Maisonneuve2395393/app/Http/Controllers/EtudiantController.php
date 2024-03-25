@@ -62,9 +62,9 @@ class EtudiantController extends Controller
      */
     public function show(Etudiant $etudiant)
     {
-        //
-        $ville = Ville::find($etudiant->ville_id);
-        return view('etudiant.show', ['etudiant' => $etudiant, 'ville' => $ville]);
+        // return $etudiant->ville->nom;
+        // $ville = Ville::find($etudiant->ville_id);
+        return view('etudiant.show', ['etudiant' => $etudiant]);
     }
 
     /**
@@ -97,7 +97,7 @@ class EtudiantController extends Controller
             'telephone' => $request->telephone,
             'email' => $request->email,
             'date_de_naissance' => $request->date_de_naissance,
-            'ville' => $request->ville
+            'ville_id' => $request->ville
         ]);
 
         return redirect()->route('etudiant.show', $etudiant->id)->with('success', 'Etudiant updated successfully!');

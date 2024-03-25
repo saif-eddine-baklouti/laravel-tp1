@@ -9,7 +9,7 @@
             <li><strong>Telephone: </strong> {{ $etudiant->telephone }} </li>
             <li><strong>Email: </strong> {{ $etudiant->email }} </li>
             <li><strong>Date de naissance: </strong> {{ $etudiant->date_de_naissance }} </li>
-            <li><strong>Ville: </strong> {{ $ville->nom }} </li>
+            <li><strong>Ville: </strong> {{ $etudiant->ville->nom }} </li>
         </ul>
         
         

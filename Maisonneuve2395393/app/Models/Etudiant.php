@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Etudiant extends Model
 {
@@ -18,7 +19,7 @@ class Etudiant extends Model
         'ville_id'
     ];
 
-    // public function ville(){
-    //     return $this->belongsTo(Ville::class);
-    // }
+    public function ville(): BelongsTo  {
+        return $this->belongsTo(Ville::class);
+    }
 }
