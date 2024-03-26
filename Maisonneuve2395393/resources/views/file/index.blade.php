@@ -2,6 +2,7 @@
 @section('title', 'List Files')
 @section('content')
 
+<div class="row">
 @forelse($files as $file)
     <div class="col-md-6">
         <div class="card mb-3">
@@ -13,12 +14,21 @@
                 </form>
                 <p class="mb-0">@lang('Author'): {{ $file->user->name }}</p>
             </div>
+            @if(Auth::user()->id == $file->user->id)
+            <form action="{{ route('file.delete', $file->id) }}"  method="post">
+                @csrf
+                @method('delete')
+                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+            </form>
+            @endif
         </div>
     </div>
 @empty
     <div class="col">
-        <div class="alert alert-danger">There are no files to display!</div>
+        <div class="alert alert-danger">@lang('lang.text_empty_file')</div>
     </div>
 @endforelse
+
+</div>
 
 @endsection

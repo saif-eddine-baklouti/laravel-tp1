@@ -36,17 +36,15 @@ class FileController extends Controller
     public function store(Request $request)
     {
 
+        // return $request;
+
         $request->validate([
             'nom_en' => 'required|min:2|max:150',
             'nom_fr' => 'required|min:2|max:150',
-            'fichier' => 'required|file|mimes:doc,pdf,zip'
+            'file' => 'required|file|mimes:doc,pdf,zip'
         ]);
 
-        // if ($request) {
-        //     # code...
-        // }
-        // return $request;
-        $slug  = Storage::disk('public')->put('public/'. Auth::id(), $request->file);
+        $slug  = Storage::disk('public')->put('/'. Auth::id(), $request->file);
 
         $file = File::create(
             [
@@ -56,7 +54,7 @@ class FileController extends Controller
                 'user_id' => Auth::id()
             ]);
         
-            return redirect()->route('file.index', $file->id)->with('success', 'file uploaded successfully !');
+            return redirect()->route('file.index', $file->id)->with('success', trans('lang.file_upload_success'));
 
     }
 
@@ -81,10 +79,6 @@ class FileController extends Controller
      */
     public function update(Request $request, File $file)
     {
-        //
-        // return $file;
-        // return $request;
-
         return Storage::disk('public')->download($request->slug);
     }
 
@@ -93,6 +87,9 @@ class FileController extends Controller
      */
     public function destroy(File $file)
     {
-        //
+        // return $file;
+        $file->delete();
+        Storage::disk('public')->delete($file->slug);
+        return redirect()->route('file.index')->with('success', trans('lang.file_deletion_success'));
     }
 }

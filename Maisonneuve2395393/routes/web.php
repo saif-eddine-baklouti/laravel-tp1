@@ -44,10 +44,13 @@ Route::get('/files', [FileController::class, 'index'])->name('file.index');
 Route::get('/upload/file', [FileController::class, 'create'])->name('file.upload');
 Route::post('/upload/file', [FileController::class, 'store'])->name('file.store');
 Route::post('/download/file', [FileController::class, 'update'])->name('file.download');
+Route::delete('/file/{file}', [FileController::class, 'destroy'])->name('file.delete');
 
 Route::get('/users', [UserController::class, 'index'])->name('user.index');
 Route::get('/user/{user}', [UserController::class, 'show'])->name('user.show');
 Route::get('/edit/user/{user}', [UserController::class, 'edit'])->name('user.edit');
+Route::put('/edit/user/{user}', [UserController::class, 'update'])->name('user.update');
+Route::delete('/user/{user}', [UserController::class, 'destroy'])->name('user.delete');
 
 });
 Route::get('/registration', [UserController::class, 'create'])->name('user.create');

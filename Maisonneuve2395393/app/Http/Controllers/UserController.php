@@ -39,7 +39,7 @@ class UserController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'email' => 'required|unique:users',
+            'email' => 'required|email|unique:users',
             'password' => 'required|min:5|max:20'
         ]);
 
@@ -52,10 +52,10 @@ class UserController extends Controller
         $updateResult = Etudiant::where('email', '=', $user->email)->update(['user_id' => $user->id]);
 
         if ($updateResult) {
-            return  redirect()->route('user.show', $user->id)->with('success', 'User created successfully!');
+            return  redirect()->route('user.show', $user->id)->with('success', trans('lang.user_update_success'));
         } else {
             $user->delete();
-            return view('user.create', ['errorCreation' => "Vous devez vous inscrire en tant qu'étudiant à l'administration du collège !!(TP-1)"]);
+            return view('user.create', ['errorCreation' =>  trans('lang.user_error_creation')]);
         }
 
         // return $updateResult;
@@ -78,7 +78,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('user.edit', ['user' => $user]);
     }
 
     /**
@@ -86,7 +86,17 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email
+        ]);
+
+        return redirect()->route('user.show', $user->id)->with('success', trans('lang.user_update_success'));
     }
 
     /**
@@ -94,6 +104,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('user.index')->with('success', trans('lang.user_deletion_success'));
     }
 }

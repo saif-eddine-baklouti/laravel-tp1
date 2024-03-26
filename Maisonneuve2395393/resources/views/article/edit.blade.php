@@ -69,11 +69,12 @@
 
 <div>
     <button type="submit" class="btn btn-primary">{{ __('Enregistrer') }}</button>
-    @isset( $article->id )
-        <a href="{{ route('article.delete', $article->id) }}" class="btn btn-secondary">{{ __('Supprimer') }}</a>
-    @endif
 </div>
-
 </form>
+        <form  method="post">
+            @csrf
+            @method('delete')
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+        </form>
 
 @endsection

@@ -41,7 +41,7 @@ class AuthController extends Controller
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
         Auth::login($user);
         Session::flash('message', 'Bienvenue ' . $user->name);
-        return redirect()->intended(route('user.index'))->withSuccess('Signed in');
+        return redirect()->intended(route('user.index'))->withSuccess(trans('Signed In'));
     }
 
     /**

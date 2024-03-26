@@ -3,6 +3,7 @@
     "Login":"Connexion",
     "Logout":"Déconnexion",
     "User":"Utilisateur",
+    "Student":"Etudiant",
     "New User":"Nouvel Utilisateur",
     "Username":"nom d'utilisateur",
     "List Users":"Liste Utilisateurs",
@@ -33,6 +34,7 @@
     "ArticleT":"titre_fr",
     "Context Of The Article":"Contexte De L'Article",
     "Author":"Auteur(e)",
-    "Download":"Télécharger"
+    "Download":"Télécharger",
+    "Signed In":"Vous êtes Connecté"
 }
 

@@ -3,6 +3,7 @@
     "Login":"Login",
     "Logout":"Logout",
     "User":"User",
+    "Student":"Student",
     "New User":"New User",
     "Username":"Username",
     "List Users":"List Users",
@@ -33,6 +34,7 @@
     "ArticleT":"titre_en",
     "Context Of The Article":"Context Of The Article",
     "Author":"Author",
-    "Download":"Download"
+    "Download":"Download",
+    "Signed In":"You are Signed in"
 
 }

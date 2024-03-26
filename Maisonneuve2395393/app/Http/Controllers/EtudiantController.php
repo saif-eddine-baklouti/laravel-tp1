@@ -51,7 +51,7 @@ class EtudiantController extends Controller
             'ville_id' => $request->ville
         ]);
 
-        return  redirect()->route('etudiant.show', $etudiant->id)->with('success', 'Etudiant created successfully!');
+        return  redirect()->route('etudiant.show', $etudiant->id)->with('success', trans('lang.student_creation_success'));
 
         // return $request;
 
@@ -100,7 +100,7 @@ class EtudiantController extends Controller
             'ville_id' => $request->ville
         ]);
 
-        return redirect()->route('etudiant.show', $etudiant->id)->with('success', 'Etudiant updated successfully!');
+        return redirect()->route('etudiant.show', $etudiant->id)->with('success', trans('lang.student_update_success'));
     }
 
     /**
@@ -108,8 +108,7 @@ class EtudiantController extends Controller
      */
     public function destroy(Etudiant $etudiant)
     {
-        //
         $etudiant->delete();
-        return redirect()->route('etudiant.index')->with('success', 'Etudiant deleted successfully!');
+        return redirect()->route('etudiant.index')->with('success', trans('lang.student_deletion_success'));
     }
 }

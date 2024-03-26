@@ -10,7 +10,11 @@
     
         <div class="container-fluid">
             <a href="{{ route('article.edit', $article->id) }}">modifier</a>
-            <a href="{{ route('article.delete', $article->id) }}">supprimer</a>
+            <form  method="post">
+            @csrf
+            @method('delete')
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+        </form>
         </div>
 </div>    
 @endif

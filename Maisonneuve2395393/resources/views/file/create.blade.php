@@ -3,37 +3,30 @@
 @section('content')
 
     <div class="container">
-        <form method="post" enctype=multipart/form-data> 
+        <form action="{{ route('file.store') }}" method="post" enctype="multipart/form-data" class="mt-5"> 
             @csrf
-            <h2>Uploading File</h2>
+            <h2 class="mb-4">Uploading File</h2>
         
-            <label for="nom_fr">@lang('nom_fr Name') (FR)</label>
-            <input type="text" name="nom_fr" id="nom_fr">
-
-            @if($errors->has('nom_fr'))
-                <div class="text-danger mt-2">
-                    {{ $errors->first('nom_fr')}}
-                </div>
-            @endif
+            <label for="nom_fr" class="form-label">@lang('File Name') (FR)</label>
+            <input type="text" class="form-control mb-3 @error('nom_fr') is-invalid @enderror" id="nom_fr" name="nom_fr" value="{{ old('nom_fr') }}">
+            @error('nom_fr')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
             
-            <label for="nom_en">@lang('File Name') (EN)</label>
-            <input type="text" name="nom_en" id="nom_en">
-            @if($errors->has('nom_en'))
-                <div class="text-danger mt-2">
-                    {{ $errors->first('nom_en')}}
-                </div>
-            @endif
+            <label for="nom_en" class="form-label">@lang('File Name') (EN)</label>
+            <input type="text" class="form-control mb-3 @error('nom_en') is-invalid @enderror" id="nom_en" name="nom_en" value="{{ old('nom_en') }}">
+            @error('nom_en')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
             
-            <label for="file">Please Upload file here</label>
-            <input type="file" name="file" id="file">
-            @if($errors->has('file'))
-                <div class="text-danger mt-2">
-                    {{ $errors->first('file')}}
-                </div>
-            @endif
+            <label for="file" class="form-label">Please Upload file here</label>
+            <input type="file" class="form-control mb-3 @error('file') is-invalid @enderror" id="file" name="file">
+            @error('file')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
             
-            <button type="submit" class="button_style" >Submit</button>
-            </form>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
 
 @endsection

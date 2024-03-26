@@ -52,7 +52,7 @@ class ArticleController extends Controller
 
         // return $article;
 
-        return redirect()->route('article.show', $article->id)->with('success', 'Article was created successfully !');
+        return redirect()->route('article.show', $article->id)->with('success', trans('lang.article_creation_success'));
     }
 
     /**
@@ -92,7 +92,7 @@ class ArticleController extends Controller
             'due_date' => $request->due_date
         ]);
 
-        return redirect()->route('article.show', $article->id)->with('success', 'Article updated successfully !');
+        return redirect()->route('article.show', $article->id)->with('success', trans('lang.article_update_success'));
     }
 
     /**
@@ -100,7 +100,8 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
+        // return $article;
         $article->delete();
-        return redirect()->route('article.index')->with('success', 'Article deleted successfully!');
+        return redirect()->route('article.index')->with('success', trans('lang.article_deletion_success'));
     }
 }

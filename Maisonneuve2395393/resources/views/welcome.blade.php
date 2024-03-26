@@ -5,7 +5,7 @@
             <div class="container px-4 px-lg-5 text-center">
                 <h1 class="mb-1">Maisonexxuve</h1>
                 <h3 class="mb-5"><em>@lang('lang.text_welcome_paragraph')</em></h3>
-                <a class="btn btn-primary btn-xl" href="{{ route('etudiant.index') }}">@lang('lang.text_welcome_btn')</a>
+                <!-- <a class="btn btn-primary btn-xl" href="{{ route('etudiant.index') }}">@lang('lang.text_welcome_btn')</a> -->
             </div>
         </div>
 
@@ -13,8 +13,8 @@
         <h1 class="my-5"> @lang('List Articles')</h1>
 
         <a href="{{ route('article.create') }}" class="btn btn-primary mb-3"> @lang('Create Article')</a>
-
-        <div class="row list-group">
+        
+        <div class="row">
             @forelse($articles as $article)
                 <div class="col-md-6 list-group-item">
                     <div class="card mb-3">
@@ -27,7 +27,7 @@
                 </div>
             @empty
                 <div class="col">
-                    <div class="alert alert-danger">There are no students to display!</div>
+                    <div class="alert alert-danger">@lang('lang.text_empty_article')</div>
                 </div>
             @endforelse  
             <div class="mt-5">

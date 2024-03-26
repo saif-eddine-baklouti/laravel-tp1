@@ -22,7 +22,7 @@ class ArticleFactory extends Factory
             'context_en' => $this->faker->paragraph(10),
             'titre_fr' => $this->faker->words(7, true),
             'context_fr' => $this->faker->paragraph(10),
-            'user_id' => User::select('id')->where('id', '!=', 1)->inRandomOrder()->first(),
+            'user_id' => User::select('id')->where('id', '==', 1)->inRandomOrder()->first(),
         ];
     }
 }

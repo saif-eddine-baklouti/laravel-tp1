@@ -16,14 +16,19 @@
 
         .userInfo {
             border: 2px solid black;
+            padding: 2rem;
         }
 
         .article-container-fr, .article-container-en {
             margin: 1rem;
         }
+
+        button {
+            margin: 1rem;
+        }
     </style>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
